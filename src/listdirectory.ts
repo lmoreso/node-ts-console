@@ -42,14 +42,14 @@
 
 var fs = require('fs');
 
-module.exports = function(dir, extension, callback) {
-    fs.readdir(dir, function(err, list) {
+module.exports = function (dir: string, extension: string, callback: any) {
+    fs.readdir(dir, function (err: any, list: string[]) {
         if (err) {
             return callback(err);
         }
 
         var suffix = '.' + extension;
-        list = list.filter(function(file) {
+        list = list.filter(function (file) {
             if (!extension) {
                 return true;
             }
