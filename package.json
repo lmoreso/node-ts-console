@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Proves d'accès a Sharepoint desde node.js",
   "main": "./src/main.ts",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node ./dist/main . json",
@@ -30,8 +31,8 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.10",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.1",
+    "@typescript-eslint/parser": "^5.45.1",
     "eslint": "^8.29.0",
     "typescript": "^4.9.3"
   }

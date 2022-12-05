@@ -2,21 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Hosted workbench",
-      "type": "pwa-chrome",
+      "type": "node",
       "request": "launch",
-      "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
-      "webRoot": "${workspaceRoot}",
+      "name": "Launch Program",
+      "program": "${workspaceRoot}/dist/main.js",
+      "cwd": "${workspaceRoot}",
       "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack:///.././src/*": "${webRoot}/src/*",
-        "webpack:///../../../src/*": "${webRoot}/src/*",
-        "webpack:///../../../../src/*": "${webRoot}/src/*",
-        "webpack:///../../../../../src/*": "${webRoot}/src/*"
-      },
-      "runtimeArgs": [
-        "--remote-debugging-port=9222",
-        "-incognito"
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
       ]
     }
   ]

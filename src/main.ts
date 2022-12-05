@@ -1,38 +1,39 @@
-let listdirectory = require('./listdirectory');
-let dir = process.argv[2] || getUserHome();
-let extension = process.argv[3];
+/**
+ *  Sense extensió dona ERR_MODULE_NOT_FOUND al executar, que no al compilar. 
+ *  Curiosament el font es dirList.ts però el import no dona error al compilar.
+ *  Perque funcionin els import i no els require, cal la entrada <"type": "module",> al 1r nivell del package.json
+ */
+import { dirList } from './dirList.js';
+import { readLinePromise } from './readLinePromise.js';
 
-let miNombre = 'Desconocido por ahora';
+init();
 
-console.log("Escribe tu nombre:");
-const stdin = process.openStdin();
+/** Inicio */
+async function init(): Promise<any> {
 
-stdin.addListener("data", (data) => {
-    console.log("Tu nombre es: " + data.toString());
-    //process.exit();
-})
+    let dir: string = process.argv[2] || process.env.HOME || '.';
+    let extension = process.argv[3];
 
-console.log(`Mi nombre: ${miNombre}`);
-console.log(`process.env.HOME: ${process.env.HOME}`);
-console.log(`process.env.HOMEPATH: ${process.env.HOMEPATH}`);
-console.log(`process.env.USERPROFILE: ${process.env.USERPROFILE}`);
-console.log(`process.argv[1]: ${process.argv[1]}`);
-console.log(`dir: ${process.argv[2]}`);
-console.log(`extension: ${process.argv[3]}`);
-
-listdirectory(dir, extension, function(err: any, list: string[]) {
-    if (err) {
-        return console.error('Error occurred:', err);
-    }
-
-    console.log('Listing of', dir, ':');
+    /** Variables iniciales */
+    console.log('Variables iniciales:');
     console.log('===================================');
-    list.forEach(function(file: string) {
-        console.log(file);
-    });
-});
+    console.log(`process.env.HOME: ${process.env.HOME}`);
+    console.log(`process.argv[1]: ${process.argv[1]}`);
+    console.log(`dir (argv[1]): ${process.argv[2]}`);
+    console.log(`extension (argv[2]): ${process.argv[3]}`);
+    console.log('');
 
-function getUserHome() {
+    /** Listar directorio */
+    await dirList(dir);
 
-    return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    /** Capturar teclat */
+    let escrit: string = 'Vaaaa';
+    escrit = await readLinePromise('Escriu quelcom al teclat, coi! -> ');
+    console.log(`Has escrit <${escrit}>`);
+
 }
+
+
+
+
+

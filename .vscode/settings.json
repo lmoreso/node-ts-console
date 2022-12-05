@@ -11,7 +11,7 @@
   },
   "typescript.tsdk": ".\\node_modules\\typescript\\lib",
   /**
-   * Linting configurations
+   * Linting configurations (de https: //dev.to/raguilera82/montar-proyecto-nodejs-con-typescript-1neo)
    */
   // Prevent editor formatting on save for certain file types
   "editor.formatOnSave": true,
@@ -35,4 +35,7 @@
       "autoFix": true
     }
   ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 }
